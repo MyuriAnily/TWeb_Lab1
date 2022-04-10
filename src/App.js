@@ -13,6 +13,9 @@ import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
+import {useState} from "react";
+
 function App() {
   return (
     <div className="App">
@@ -27,7 +30,15 @@ function App() {
           <h1>Content</h1>
         <BasicGrid></BasicGrid>
         </div>
-        
+        <form action="">
+<FullWidthTextField></FullWidthTextField>
+<br/>
+<FullWidthTextField></FullWidthTextField>
+<br/>
+<FullWidthTextField></FullWidthTextField>
+<br/>
+<button type="submit">Submit</button>
+</form>
       </header>
     </div>
   );
@@ -59,22 +70,21 @@ export default App;
 }
 
 
-function MediaCard() {
+function MediaCard(props) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
         height="140"
-        image="https://mui.com/static/images/cards/contemplative-reptile.jpg"
+        image={props.picture}
         alt="green iguana"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+          {props.title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          {props.description}
         </Typography>
       </CardContent>
       <CardActions>
@@ -100,16 +110,34 @@ function BasicGrid() {
       <Grid container spacing={2}>
 
         <Grid item xs={4}>
-          <Item><MediaCard></MediaCard></Item>
+          <Item><MediaCard title="Dragon" description="A dragon is a reptile-like legendary creature that appears in the folklore of many cultures worldwide."picture="https://awoiaf.westeros.org/images/thumb/d/d4/Aegon_on_Balerion.jpg/1200px-Aegon_on_Balerion.jpg"></MediaCard></Item>
         </Grid>
         <Grid item xs={4}>
-          <Item><MediaCard></MediaCard></Item>
+          <Item><MediaCard title="Iguana" description="Iguana is a genus of herbivorous lizards that are native to tropical areas of Mexico, Central America, South America, and the Caribbean. "picture="https://aquamir63.ru/wp-content/uploads/2012/09/87441702.jpg"></MediaCard></Item>
         </Grid>
         <Grid item xs={4}>
-          <Item><MediaCard></MediaCard></Item>
+          <Item><MediaCard title="Snake" description="Snakes like all other squamates, snakes are ectothermic, amniote vertebrates covered in overlapping scales." picture="https://ichef.bbci.co.uk/news/976/cpsprodpb/1486F/production/_105597048_snakes8.jpg"></MediaCard></Item>
         </Grid>
 
       </Grid>
     </Box>
   );
 }
+
+function FullWidthTextField() {
+  const [input, setInput] = useState('');
+  console.log(input)
+  return (
+  <Box
+  sx={{
+  width: 500,
+  maxWidth: '100%',
+  }}
+  >
+  <input value={input} onInput={e => setInput(e.target.value)}/>
+  </Box>
+  );
+  }
+  
+
+
