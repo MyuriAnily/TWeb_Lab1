@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+.todo-container {
+	width: 200px;
+	padding: 12px;
+	display: flex;
+	justify-content: space-between;
+	margin: 12px 24px 12px 0;
+	background-color: aquamarine;
+	cursor: pointer;
+}
